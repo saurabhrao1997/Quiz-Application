@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const Navigate = useNavigate()
-  const [form, setForm] = useState({});
-  const onSubmit = async (e) => {
+  const [form, setForm] = useState<any>({});
+  const onSubmit:(e:any)=>void = async (e) => {
     e.preventDefault();
     try {
 
-   let response =   await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/login`, {
+   let response:any =   await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/login`, {
         method: "POST",
         // mode: "no-cors",
         body: JSON.stringify(form),
@@ -16,7 +16,7 @@ export default function Login() {
           'Content-Type': 'application/json'
       },
       })
-      let result = await response.json()
+      let result:any = await response.json()
       console.log("response",response,result?.data?.data,result?.data?.token
 
       )
@@ -34,7 +34,7 @@ export default function Login() {
       console.log("error", error);
     }
   };
-  const onChange = (e) => {
+  const onChange:(e:any)=>void = (e) => {
     const { name, value } = e?.target;
     setForm((pre) => ({ ...pre, [name]: value }));
   };

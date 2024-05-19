@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import {useNavigate} from "react-router-dom"
 export default function Register() {
   const Navigate = useNavigate()
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState<any>({});
 
-  const onSubmit = async (e) => {
+  const onSubmit:(e:any)=>void = async (e:any) => {
     e.preventDefault();
     try {
       //    let reponse =   await axios.post("http://locahost:5000/api/v1/register",form,{headers:{
@@ -17,7 +17,7 @@ export default function Register() {
       //     // 'Sec-Fetch-Site': "cross-site",
       //   }})
       // console.log("reponse",reponse)
-      let response = await fetch("http://localhost:3000/api/v1/register", {
+      let response:any = await fetch("http://localhost:3000/api/v1/register", {
         method: "POST",
         // mode: "no-cors",
         body: JSON.stringify(form),
@@ -25,7 +25,7 @@ export default function Register() {
           "Content-Type": "application/json",
         },
       });
-      let result = await response.json()
+      let result:any = await response.json()
       if(response.ok  === false){
         result &&   alert(`${result?.message}`)
       }else{
@@ -37,7 +37,7 @@ export default function Register() {
       console.log("error", error);
     }
   };
-  const onChange = (e) => {
+  const onChange:(e:any)=>void = (e) => {
     const { name, value } = e?.target;
     setForm((pre) => ({ ...pre, [name]: value }));
   };
@@ -69,7 +69,7 @@ export default function Register() {
             >
               <div>
                 <label
-                  htmlhtmlFor="firstName"
+                  htmlFor="firstName"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Name
@@ -86,7 +86,7 @@ export default function Register() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="lastName"
+                  htmlFor="lastName"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Last Name
@@ -103,7 +103,7 @@ export default function Register() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="email"
+                  htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Your email
@@ -120,7 +120,7 @@ export default function Register() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="password"
+                  htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Password
@@ -137,7 +137,7 @@ export default function Register() {
               </div>
               <div>
                 <label
-                  htmlhtmlFor="confirmPassword"
+                  htmlFor="confirmPassword"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Confirm password
@@ -164,7 +164,7 @@ export default function Register() {
                 </div>
                 <div className="ml-3 text-sm">
                   <label
-                    htmlhtmlFor="terms"
+                    htmlFor="terms"
                     className="font-light text-gray-500 dark:text-gray-300"
                   >
                     I accept the{" "}
