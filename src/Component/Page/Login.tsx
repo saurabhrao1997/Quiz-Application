@@ -8,7 +8,7 @@ export default function Login() {
     e.preventDefault();
     try {
 
-   let response =   await fetch("http://localhost:3000/api/v1/login", {
+   let response =   await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/login`, {
         method: "POST",
         // mode: "no-cors",
         body: JSON.stringify(form),
